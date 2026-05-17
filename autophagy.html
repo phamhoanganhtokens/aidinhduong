@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Báo Cáo Sức Khỏe Toàn Diện - AI Dinh Dưỡng</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: {
+                            900: '#1a365d',
+                            800: '#1e3a8a',
+                            700: '#1d4ed8',
+                        },
+                        clinical: {
+                            50: '#f8fafc',
+                            100: '#f1f5f9',
+                            200: '#e2e8f0',
+                        },
+                        accent: {
+                            emerald: '#059669',
+                            crimson: '#991b1b',
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['"Times New Roman"', 'serif'],
+                        sans: ['Outfit', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #fafafa;
+            color: #334155;
+            font-family: 'Times New Roman', serif;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .report-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+        }
+
+        .justify-text {
+            text-align: justify;
+        }
+
+        .section-title {
+            color: #1a365d;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 0.5rem;
+            margin-top: 2.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: bold;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .badge-suitability {
+            background-color: #fef3c7;
+            color: #92400e;
+            padding: 4px 12px;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            border: 1px solid #f59e0b;
+        }
+
+        .medical-card {
+            background-color: #f0f4f8;
+            border-radius: 12px;
+            padding: 1.5rem;
+            border-left: 6px solid #1a365d;
+        }
+
+        .warning-box {
+            background-color: #fff1f2;
+            border: 1px solid #fecdd3;
+            border-left: 6px solid #991b1b;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+        }
+
+        th {
+            background-color: #f1f5f9;
+            color: #1a365d;
+            font-weight: 700;
+            text-align: left;
+            padding: 12px;
+            border-bottom: 2px solid #cbd5e1;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f8fafc;
+        }
+
+        .icon-svg {
+            width: 24px;
+            height: 24px;
+            fill: currentColor;
+        }
+
+        @media (max-width: 640px) {
+            .report-container {
+                margin: 0;
+                box-shadow: none;
+            }
+            .header-flex {
+                flex-direction: column;
+                text-align: center;
+            }
+            .table-responsive {
+                overflow-x: auto;
+            }
+        }
+
+        .print-only {
+            display: none;
+        }
+
+        @media print {
+            .no-print { display: none; }
+            .print-only { display: block; }
+            .report-container { box-shadow: none; max-width: 100%; }
+            body { background: white; }
+        }
+    </style>
+</head>
+<body class="p-0 sm:p-8">
+
+    <div class="report-container p-6 sm:p-12">
+        <!-- Header Section -->
+        <header class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-10 pb-6 border-bottom-2 border-gray-100">
+            <div>
+                <h1 class="text-3xl font-bold text-navy-900 tracking-tight">AUTOPHAGY - TỰ THỰC BÀO</h1>
+                <p class="text-accent-emerald font-semibold font-sans tracking-widest text-sm uppercase">AI Dinh Dưỡng • Hệ Thống Phân Tích Chuyên Sâu</p>
+            </div>
+            <div class="mt-4 sm:mt-0 text-right font-sans text-xs text-gray-500">
+                <p id="current-date"></p>
+                <p class="font-medium text-navy-800">www.phamhoanganhtokens.com</p>
+            </div>
+        </header>
+
+        <!-- Executive Summary -->
+        <div class="medical-card mb-10">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-xl font-bold text-navy-900 uppercase tracking-wide">Tóm tắt Chiến lược</h2>
+                <span class="badge-suitability">Đánh giá: Thận trọng (Amber)</span>
+            </div>
+            <p class="justify-text text-navy-800 font-medium italic">
+                Báo cáo này phân tích cấu trúc chuyển hóa của khách hàng <strong>Phạm Hoàng Anh</strong> dựa trên các chỉ số hiện tại và thói quen sinh hoạt. Mục tiêu trọng tâm là kích hoạt cơ chế Autophagy để sửa chữa tế bào và giảm mỡ nội tạng an toàn.
+            </p>
+        </div>
+
+        <!-- Warning Callout -->
+        <div class="warning-box">
+            <div class="flex items-center gap-3 mb-2">
+                <svg class="icon-svg text-accent-crimson" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
+                <h3 class="text-accent-crimson font-bold uppercase text-sm">Tuyên bố miễn trừ trách nhiệm y tế</h3>
+            </div>
+            <p class="text-sm justify-text text-red-900">
+                Báo cáo này được tạo ra nhằm mục đích cung cấp thông tin chiến lược sức khỏe và không thay thế cho lời khuyên, chẩn đoán hoặc phác đồ điều trị từ bác sĩ chuyên khoa. Khuyến nghị anh Phạm Hoàng Anh nên tham khảo ý kiến bác sĩ trước khi bắt đầu bất kỳ chương trình tập luyện hoặc thay đổi chế độ dinh dưỡng lớn nào, đặc biệt khi có chỉ số BMI ở mức béo phì.
+            </p>
+        </div>
+
+        <!-- Main Content -->
+        <article class="space-y-10">
+            
+            <!-- Section 1 -->
+            <section>
+                <div class="section-title">
+                    <svg class="icon-svg" viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 10h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"/></svg>
+                    1. Phân tích tình trạng sức khỏe hiện tại
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
+                    <div class="p-4 bg-gray-50 rounded border border-gray-100">
+                        <span class="block text-xs uppercase text-gray-500 font-sans mb-1">Chỉ số BMI</span>
+                        <span class="text-2xl font-bold text-accent-crimson">31.2</span>
+                        <span class="block text-sm text-gray-600 mt-1">Phân loại: <strong>Béo phì độ 2</strong> (Chuẩn Á Đông)</span>
+                    </div>
+                    <div class="p-4 bg-gray-50 rounded border border-gray-100">
+                        <span class="block text-xs uppercase text-gray-500 font-sans mb-1">Hồ sơ khách hàng</span>
+                        <span class="text-md font-bold text-navy-900">Anh Phạm Hoàng Anh | 43 tuổi</span>
+                        <span class="block text-sm text-gray-600 mt-1">Chiều cao: 1m65 | Cân nặng: 85kg</span>
+                    </div>
+                </div>
+                <p class="justify-text mb-4">
+                    Mặc dù hiện tại anh "cảm thấy khỏe mạnh", nhưng béo phì ở tuổi 43 mang theo những rủi ro chuyển hóa tiềm ẩn như mỡ nội tạng cao, kháng insulin (tiền tiểu đường), cao huyết áp và các bệnh lý tim mạch. Việc tiêu thụ thường xuyên carbohydrate tinh chế (bánh mì, phở) làm tăng nguy cơ rối loạn lipid máu và tích tụ mỡ bụng.
+                </p>
+            </section>
+
+            <!-- Section 2 -->
+            <section>
+                <div class="section-title">
+                    <svg class="icon-svg" viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"/><path d="M12.5 7H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+                    2. Mục tiêu tối ưu hóa thực bào (Autophagy)
+                </div>
+                <ul class="list-disc ml-6 space-y-3 justify-text">
+                    <li><strong>Đánh giá:</strong> Thói quen bỏ bữa sáng của anh là một nền tảng rất tốt cho phương pháp Nhịn ăn gián đoạn (Intermittent Fasting 16:8).</li>
+                    <li><strong>Tối ưu hóa Autophagy:</strong> Để kích hoạt quá trình tự thực bào (cơ chế tế bào tự dọn dẹp và tái tạo), trong khung giờ nhịn ăn sáng, anh tuyệt đối không nạp calo.</li>
+                    <li><strong>Chiến lược chuyển hóa:</strong> Nếu uống cà phê buổi sáng, hãy dùng <strong>cà phê đen không đường, không sữa</strong>. Caffeine trong cà phê đen không phá vỡ trạng thái nhịn ăn mà còn hỗ trợ phân giải mô mỡ và thúc đẩy Autophagy.</li>
+                </ul>
+            </section>
+
+            <!-- Section 3 -->
+            <section>
+                <div class="section-title">
+                    <svg class="icon-svg" viewBox="0 0 24 24"><path d="M11 9H9V2H7v7H5V2H3v7c0 2.12 1.66 3.84 3.75 3.97V22h2.5v-9.03C11.34 12.84 13 11.12 13 9V2h-2v7zm5-3v8h2.5v8H21V2c-2.76 0-5 2.24-5 4z"/></svg>
+                    3. Khuyến nghị dinh dưỡng cụ thể
+                </div>
+                <div class="bg-clinical-100 p-6 rounded-lg border border-clinical-200 mb-6">
+                    <h4 class="font-bold text-navy-800 mb-2 underline">Vấn đề hiện tại:</h4>
+                    <p class="justify-text">Phở và bánh mì chứa hàm lượng carbohydrate tinh chế rất cao. Ở thể trạng béo phì, lượng tinh bột này dễ dàng chuyển hóa thành mỡ thừa dưới tác động của insulin.</p>
+                </div>
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Thành phần</th>
+                                <th>Chiến lược điều chỉnh</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="font-bold">Tinh bột (Carb)</td>
+                                <td>Cắt giảm 50% lượng tinh bột hiện tại. Chuyển sang ăn nhiều thịt/rau và ít bánh (phở/bánh mì).</td>
+                            </tr>
+                            <tr>
+                                <td class="font-bold">Đạm (Protein)</td>
+                                <td>Ưu tiên thịt nạc, cá, trứng, các loại đậu. Giúp duy trì cơ bắp và tăng cảm giác no.</td>
+                            </tr>
+                            <tr>
+                                <td class="font-bold">Chất xơ</td>
+                                <td>Ăn nhiều rau xanh trước bữa chính để làm chậm quá trình hấp thụ đường vào máu.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Section 4 -->
+            <section>
+                <div class="section-title">
+                    <svg class="icon-svg" viewBox="0 0 24 24"><path d="M20.57 14.86L22 13.43 20.57 12 17 15.57 8.43 7 12 3.43 10.57 2 9.14 3.43 7.71 2 5.57 4.14 4.14 2.71 2.71 4.14 4.14 5.57 2 7.71 3.43 9.14 2 10.57 3.43 12 7 8.43 15.57 17 12 20.57 13.43 22 14.86 20.57 17 18.43 19.14 21.29 22.14 22.71 20.71 19.86 17.86 22 15.71l-1.43-1.43-2.14 2.15-4.29-4.29 2.14-2.14-1.43-1.43z"/></svg>
+                    4. Kế hoạch tập luyện chuyên biệt
+                </div>
+                <p class="justify-text mb-4 italic text-gray-600 border-l-4 border-gray-300 pl-4">
+                    Đi bộ là thói quen tốt nhưng chưa đủ cường độ để đốt cháy lượng mỡ thừa lớn cho người nặng 85kg.
+                </p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div class="p-5 bg-navy-900 text-white rounded-xl shadow-lg">
+                        <h5 class="font-bold mb-2 flex items-center gap-2">
+                            <span class="w-2 h-2 bg-accent-emerald rounded-full"></span>
+                            Tập kháng lực
+                        </h5>
+                        <p class="text-sm opacity-90">3 buổi/tuần (hít đất, squat). Cơ bắp là "lò đốt calo" tự nhiên giúp tăng tốc độ trao đổi chất.</p>
+                    </div>
+                    <div class="p-5 bg-navy-800 text-white rounded-xl shadow-lg">
+                        <h5 class="font-bold mb-2 flex items-center gap-2">
+                            <span class="w-2 h-2 bg-accent-emerald rounded-full"></span>
+                            Cardio Zone 2
+                        </h5>
+                        <p class="text-sm opacity-90">Đi bộ nhanh liên tục 30-45 phút để duy trì nhịp tim ở vùng đốt mỡ tối ưu.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 5 -->
+            <section>
+                <div class="section-title text-accent-crimson border-accent-crimson/20">
+                    <svg class="icon-svg" viewBox="0 0 24 24"><path d="M12 2L1 21h22L12 2zm1 14h-2v-2h2v2zm0-4h-2V8h2v4z"/></svg>
+                    5. Lưu ý an toàn và chống chỉ định
+                </div>
+                <div class="space-y-4">
+                    <div class="flex gap-4 items-start bg-red-50 p-4 rounded-lg">
+                        <div class="p-2 bg-accent-crimson text-white rounded font-bold text-xs">CẤM</div>
+                        <p class="justify-text font-bold text-red-800">Chống chỉ định tuyệt đối các bộ môn có va chạm mạnh như chạy bộ hay nhảy dây ở giai đoạn này để tránh chấn thương khớp gối do áp lực cân nặng 85kg.</p>
+                    </div>
+                    <div class="flex gap-4 items-start bg-blue-50 p-4 rounded-lg">
+                        <div class="p-2 bg-navy-800 text-white rounded font-bold text-xs">YÊU CẦU</div>
+                        <p class="justify-text text-navy-900">Thực hiện xét nghiệm máu tổng quát (đường huyết, mỡ máu, acid uric) để có cái nhìn chính xác về tình trạng nội tại.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 6 -->
+            <section class="pb-12">
+                <div class="section-title">
+                    <svg class="icon-svg" viewBox="0 0 24 24"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg>
+                    6. "Hack" Menu cá nhân hóa
+                </div>
+                <div class="space-y-6">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div class="border p-4 rounded-lg">
+                            <h6 class="font-bold text-navy-900 border-b pb-2 mb-2">Món Phở</h6>
+                            <p class="text-sm">Yêu cầu "nhiều thịt, ít bánh", gọi thêm giá trần. Tránh húp nước dùng (nhiều muối/béo).</p>
+                        </div>
+                        <div class="border p-4 rounded-lg">
+                            <h6 class="font-bold text-navy-900 border-b pb-2 mb-2">Bánh Mì</h6>
+                            <p class="text-sm">Hạn chế ăn. Khi ăn nên bỏ bớt ruột bánh, tăng cường rau xanh/dưa leo.</p>
+                        </div>
+                        <div class="border p-4 rounded-lg">
+                            <h6 class="font-bold text-navy-900 border-b pb-2 mb-2">Đồ uống</h6>
+                            <p class="text-sm">Cà phê đen đá hoặc trà không đường. Tuyệt đối tránh cà phê sữa đá (sữa đặc).</p>
+                        </div>
+                        <div class="border p-4 rounded-lg">
+                            <h6 class="font-bold text-navy-900 border-b pb-2 mb-2">Giấc ngủ</h6>
+                            <p class="text-sm">Đảm bảo 7-8 tiếng/đêm giúp ổn định hormone Cortisol, hỗ trợ giảm mỡ bụng.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </article>
+
+        <!-- Minimal Footer (Internal) -->
+        <div class="mt-8 pt-8 border-t border-gray-200 text-center font-sans text-xs text-gray-400 no-print">
+            <p>Báo cáo kỹ thuật số bảo mật dành riêng cho bệnh nhân</p>
+            <div class="flex justify-center gap-4 mt-2">
+                <a href="#" class="hover:text-navy-800 transition-colors">Trung tâm hỗ trợ</a>
+                <span>•</span>
+                <a href="www.phamhoanganhtokens.com" target="_blank" class="hover:text-navy-800 transition-colors">Hệ thống AI Dinh Dưỡng</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Set current date in localized format
+        const dateElement = document.getElementById('current-date');
+        const options = { year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' };
+        dateElement.innerText = 'Ngày báo cáo: ' + new Date().toLocaleDateString('vi-VN', options);
+
+        // Simple animation on scroll
+        const sections = document.querySelectorAll('section');
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        sections.forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(20px)';
+            section.style.transition = 'all 0.6s ease-out';
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
