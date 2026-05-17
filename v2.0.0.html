@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kế hoạch Quản lý Sức khỏe Toàn diện - AI Dinh Dưỡng</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap');
+
+        :root {
+            --primary-navy: #1A365D;
+            --success-green: #2F855A;
+            --alert-red: #C53030;
+            --bg-gray: #F9FAFB;
+        }
+
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            background-color: var(--bg-gray);
+            color: #2D3748;
+            line-height: 1.6;
+            text-rendering: optimizeLegibility;
+        }
+
+        .heading-font {
+            font-family: 'Outfit', sans-serif;
+        }
+
+        .container-report {
+            max-width: 900px;
+            margin: 2rem auto;
+            background: white;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid #E2E8F0;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+            transition: transform 0.2s ease;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-2px);
+        }
+
+        p, li {
+            text-align: justify;
+            margin-bottom: 1rem;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Outfit', sans-serif;
+            color: var(--primary-navy);
+            font-weight: 700;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        h1 { font-size: 2.25rem; border-bottom: 3px solid var(--primary-navy); padding-bottom: 0.5rem; }
+        h2 { font-size: 1.5rem; border-left: 4px solid var(--primary-navy); padding-left: 1rem; margin-top: 3rem; }
+        h3 { font-size: 1.25rem; color: #2D3748; }
+
+        .clinical-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            font-family: 'Times New Roman', serif;
+        }
+
+        .clinical-table th {
+            background-color: var(--primary-navy);
+            color: white;
+            text-align: left;
+            padding: 12px;
+            font-weight: 600;
+        }
+
+        .clinical-table td {
+            padding: 12px;
+            border-bottom: 1px solid #E2E8F0;
+        }
+
+        .clinical-table tr:nth-child(even) {
+            background-color: #F8FAFC;
+        }
+
+        .safety-callout {
+            background-color: #FFFBEB;
+            border-left: 5px solid #F59E0B;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 4px;
+        }
+
+        .btn-print {
+            transition: all 0.3s ease;
+            font-family: 'Outfit', sans-serif;
+        }
+
+        .btn-print:hover {
+            background-color: var(--primary-navy);
+            color: white;
+        }
+
+        @media print {
+            .no-print { display: none; }
+            body { background: white; }
+            .container-report { box-shadow: none; border: none; width: 100%; max-width: 100%; margin: 0; }
+        }
+
+        .badge-red { background-color: #FED7D7; color: #9B2C2C; padding: 2px 8px; border-radius: 4px; font-weight: bold; }
+        
+        ul { list-style-type: disc; padding-left: 1.5rem; }
+        ol { list-style-type: decimal; padding-left: 1.5rem; }
+    </style>
+</head>
+<body class="p-4 md:p-8">
+
+    <div class="container-report bg-white">
+        <!-- Header Section -->
+        <header class="p-8 border-b border-gray-100 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+            <div>
+                <h2 class="m-0 border-none p-0 text-3xl font-bold text-navy-900 tracking-tight heading-font">AI DINH DƯỠNG</h2>
+                <p class="m-0 text-sm text-gray-500 font-sans">www.phamhoanganhtokens.com</p>
+            </div>
+            <div class="text-right">
+                <button onclick="window.print()" class="no-print btn-print px-4 py-2 border-2 border-[#1A365D] text-[#1A365D] rounded font-semibold text-sm mb-2 inline-flex items-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                        <path d="M2.5 8a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1z"/>
+                        <path d="M5 1a2 2 0 0 0-2 2v2H2a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h1v1a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2v-1h1a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-1V3a2 2 0 0 0-2-2H5zM4 3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v2H4V3zm1 5a2 2 0 0 0-2 2v1H2a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1v-1a2 2 0 0 0-2-2H5zm7 2v3a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1z"/>
+                    </svg>
+                    XUẤT PDF / IN BÁO CÁO
+                </button>
+                <p class="m-0 text-xs text-gray-400 font-sans uppercase tracking-widest">Cập nhật: <span id="current-date"></span></p>
+            </div>
+        </header>
+
+        <!-- Patient Info -->
+        <div class="px-8 py-6 bg-slate-50 border-b border-gray-100 grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="space-y-1">
+                <p class="m-0 text-xs font-bold text-gray-500 uppercase font-sans">Bệnh nhân / Khách hàng</p>
+                <p class="m-0 text-xl font-bold text-gray-800 heading-font">PHẠM HOÀNG ANH</p>
+            </div>
+            <div class="space-y-1 md:text-right">
+                <p class="m-0 text-xs font-bold text-gray-500 uppercase font-sans">Mã hồ sơ</p>
+                <p class="m-0 text-xl font-bold text-gray-800 heading-font">#PHA-2024-0812</p>
+            </div>
+        </div>
+
+        <div class="p-8 md:p-12">
+            <h1 class="mt-0 text-center md:text-left">KẾ HOẠCH QUẢN LÝ SỨC KHỎE TOÀN DIỆN</h1>
+
+            <!-- Analysis Cards -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 my-10">
+                <div class="glass-card p-5 rounded-xl border border-red-100 bg-red-50/30">
+                    <p class="text-xs font-bold text-red-800 uppercase m-0 font-sans">BMI Chỉ số</p>
+                    <p class="text-3xl font-bold text-red-700 m-0 heading-font">31.22</p>
+                    <p class="text-xs font-bold bg-red-200 text-red-800 inline-block px-2 py-1 rounded mt-2">BÉO PHÌ ĐỘ II</p>
+                </div>
+                <div class="glass-card p-5 rounded-xl">
+                    <p class="text-xs font-bold text-blue-800 uppercase m-0 font-sans">BMR (Chuyển hóa nền)</p>
+                    <p class="text-3xl font-bold text-blue-900 m-0 heading-font">1,671</p>
+                    <p class="text-xs text-gray-500 mt-2 font-sans italic">kcal / ngày</p>
+                </div>
+                <div class="glass-card p-5 rounded-xl border border-green-100 bg-green-50/30">
+                    <p class="text-xs font-bold text-green-800 uppercase m-0 font-sans">TDEE (Tiêu thụ tổng)</p>
+                    <p class="text-3xl font-bold text-green-700 m-0 heading-font">2,172</p>
+                    <p class="text-xs text-gray-500 mt-2 font-sans italic">kcal / ngày</p>
+                </div>
+            </div>
+
+            <section>
+                <h2>1. Phân tích trạng thái hiện tại</h2>
+                <p>Dựa trên tiêu chuẩn của Tổ chức Y tế Thế giới (WHO) khu vực Châu Á, ông đang ở mức <strong>Béo phì độ II</strong>. Đây là mức báo động đỏ về mặt lâm sàng.</p>
+                <ul class="space-y-2 mb-6">
+                    <li><strong>Rủi ro Tim mạch & Huyết áp:</strong> Trọng lượng cơ thể lớn gây áp lực cao lên hệ thống tim mạch và thành mạch máu.</li>
+                    <li><strong>Rối loạn chuyển hóa:</strong> Nguy cơ cao mắc Tiểu đường tuýp 2, kháng insulin và tình trạng Gan nhiễm mỡ.</li>
+                    <li><strong>Cơ xương khớp:</strong> Chỉ số BMI > 30 gây áp lực cực lớn lên khớp gối, cổ chân và cột sống thắt lưng.</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>2. Phân tích Nội tiết và Dinh dưỡng Lâm sàng</h2>
+                <p>Dựa trên thói quen hiện tại, có ba vấn đề chuyển hóa cần can thiệp ngay lập tức:</p>
+                <ol class="space-y-4">
+                    <li><strong>Hệ quả của việc bỏ bữa sáng & Cà phê:</strong> Việc chỉ uống cà phê khi bụng rỗng kích thích tăng tiết <strong>Cortisol</strong>. Cơ thể rơi vào trạng thái "sinh tồn", dễ tích mỡ bụng và gây kháng Insulin.</li>
+                    <li><strong>Cấu trúc thực phẩm:</strong> Bánh mỳ trắng và Phở có chỉ số đường huyết (GI) cao, gây tăng đường huyết đột biến, buộc tuyến tụy tiết lượng lớn Insulin, ngăn cản quá trình phân giải mỡ thừa (Lipolysis).</li>
+                    <li><strong>Hệ tiêu hóa:</strong> Thiếu hụt chất xơ từ rau củ dẫn đến hệ vi sinh đường ruột kém đa dạng, ảnh hưởng đến khả năng điều tiết cơn thèm ăn.</li>
+                </ol>
+            </section>
+
+            <section>
+                <h2>3. Kế hoạch Dinh dưỡng Cá nhân hóa</h2>
+                <p><strong>Mục tiêu:</strong> Giảm cân an toàn (giảm mỡ, giữ cơ).<br>
+                <strong>Mức năng lượng mục tiêu:</strong> <span class="text-xl font-bold text-green-700">1.750 kcal/ngày</span></p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 my-6">
+                    <div class="p-4 border-t-4 border-blue-500 bg-blue-50 rounded shadow-sm">
+                        <span class="text-xs font-bold text-blue-600 uppercase">Protein (Đạm)</span>
+                        <p class="text-2xl font-bold">30% <span class="text-sm font-normal text-gray-500">~130g</span></p>
+                    </div>
+                    <div class="p-4 border-t-4 border-amber-500 bg-amber-50 rounded shadow-sm">
+                        <span class="text-xs font-bold text-amber-600 uppercase">Carbs (Tinh bột)</span>
+                        <p class="text-2xl font-bold">40% <span class="text-sm font-normal text-gray-500">~175g</span></p>
+                    </div>
+                    <div class="p-4 border-t-4 border-emerald-500 bg-emerald-50 rounded shadow-sm">
+                        <span class="text-xs font-bold text-emerald-600 uppercase">Fat (Chất béo)</span>
+                        <p class="text-2xl font-bold">30% <span class="text-sm font-normal text-gray-500">~58g</span></p>
+                    </div>
+                </div>
+
+                <div class="overflow-x-auto">
+                    <table class="clinical-table">
+                        <thead>
+                            <tr>
+                                <th style="width: 20%;">Bữa ăn</th>
+                                <th style="width: 45%;">Thực phẩm gợi ý</th>
+                                <th style="width: 35%;">Lưu ý chuyên môn</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Sáng (07:30)</strong></td>
+                                <td>1 quả trứng luộc + 1/2 củ khoai lang + 1 ly nước lọc lớn. (Cà phê đen không đường sau ăn 30').</td>
+                                <td>Khởi động trao đổi chất, tránh bỏ bữa.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Trưa (12:00)</strong></td>
+                                <td>1 bát cơm gạo lứt + 150g ức gà/cá áp chảo + 2 bát rau xanh.</td>
+                                <td>Ăn rau xanh trước khi ăn đạm và tinh bột.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Phụ (15:30)</strong></td>
+                                <td>1 hũ sữa chua không đường hoặc 20g hạt hạnh nhân/óc chó.</td>
+                                <td>Ổn định đường huyết, tránh ăn quá nhiều tối.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Tối (18:30)</strong></td>
+                                <td>150g cá hấp/thịt nạc + 1 đĩa lớn bông cải xanh/rau muống + canh.</td>
+                                <td>Hạn chế tối đa tinh bột trắng vào cuối ngày.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section>
+                <h2>4. Kế hoạch Luyện tập & Lối sống</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="bg-slate-50 p-6 rounded-lg border border-slate-200">
+                        <h3 class="mt-0 text-navy-800">Cải thiện vận động</h3>
+                        <ul class="space-y-3">
+                            <li><strong>Đi bộ nhanh (Power Walking):</strong> 45-60 phút mỗi ngày. Duy trì tốc độ khiến bạn hơi hụt hơi nhưng vẫn có thể nói chuyện.</li>
+                            <li><strong>Tăng NEAT:</strong> Leo cầu thang bộ, đứng dậy vận động mỗi 30 phút làm việc.</li>
+                        </ul>
+                    </div>
+                    <div class="bg-slate-50 p-6 rounded-lg border border-slate-200">
+                        <h3 class="mt-0 text-navy-800">Quản lý lối sống</h3>
+                        <ul class="space-y-3">
+                            <li><strong>Hydrat hóa:</strong> 2.5 - 3 lít nước/ngày. 1 ly ngay khi ngủ dậy và trước mỗi bữa ăn.</li>
+                            <li><strong>Giấc ngủ:</strong> Trước 23h, đủ 7-8 tiếng để điều hòa hormone thèm ăn.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>5. Lời khuyên tổng hợp từ Chuyên gia</h2>
+                <blockquote class="border-l-4 border-blue-800 pl-6 py-2 italic bg-blue-50/50 my-6">
+                    <p class="mb-2">"Thay thế tinh bột tinh chế bằng các loại hạt và ngũ cốc nguyên cám là bước quan trọng nhất để ổn định Insulin - chìa khóa để mở kho mỡ dự trữ của cơ thể."</p>
+                </blockquote>
+                <ul class="space-y-2">
+                    <li><strong>Quy tắc bàn tay:</strong> 1 lòng bàn tay đạm, 1 nắm tay tinh bột tốt, 2 nắm tay rau xanh, 1 ngón cái chất béo tốt.</li>
+                    <li><strong>Cải thiện thói quen ăn Phở:</strong> Yêu cầu "ít bánh, nhiều rau chần, thịt nạc", không nước béo, không quẩy.</li>
+                </ul>
+            </section>
+
+            <!-- Safety Highlight -->
+            <div class="safety-callout">
+                <h3 class="mt-0 text-red-800 heading-font flex items-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                        <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                    </svg>
+                    6. Tuyên bố miễn trừ trách nhiệm lâm sàng
+                </h3>
+                <div class="text-sm text-red-900 space-y-2 font-serif">
+                    <p>• Lưu ý: Đây là kế hoạch được tổng hợp bởi mô hình trí tuệ nhân tạo (AI) dựa trên các kiến thức dinh dưỡng tổng quát. Kế hoạch này không thay thế cho bất kỳ chẩn đoán y khoa hoặc điều trị trực tiếp nào từ bác sĩ.</p>
+                    <p>• Ông Phạm Hoàng Anh nên gặp bác sĩ để thực hiện các xét nghiệm định kỳ (Đường huyết, Mỡ máu, Men gan) trước khi bắt đầu lộ trình giảm cân.</p>
+                    <p>• Nếu có bất kỳ dấu hiệu bất thường nào như chóng mặt, đau ngực hoặc đau khớp dữ dội trong quá trình thực hiện, hãy dừng lại và tham vấn chuyên gia y tế ngay lập tức.</p>
+                </div>
+            </div>
+
+            <div class="mt-12 pt-8 border-t border-gray-100 flex justify-between items-center no-print">
+                <p class="text-xs text-gray-400 font-sans italic">Hồ sơ này được bảo mật và chỉ dành cho mục đích tư vấn dinh dưỡng cá nhân.</p>
+                <div class="flex gap-4">
+                     <span class="text-xs font-bold text-navy-800 font-sans tracking-widest border border-navy-800 px-3 py-1">AI VERIFIED</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Set current date
+        const options = { year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' };
+        document.getElementById('current-date').innerText = new Date().toLocaleDateString('vi-VN', options);
+    </script>
+</body>
+</html>
