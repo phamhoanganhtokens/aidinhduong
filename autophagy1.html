@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Báo Cáo Sức Khỏe Toàn Diện - AI Dinh Dưỡng</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-navy: #1a365d;
+            --clinical-blue: #f0f4f8;
+            --accent-green: #059669;
+            --warning-red: #dc2626;
+            --bg-off-white: #fafafa;
+        }
+
+        body {
+            background-color: var(--bg-off-white);
+            color: #334155;
+            font-family: 'Times New Roman', Times, serif;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .academic-text {
+            text-align: justify;
+            hyphens: auto;
+        }
+
+        .header-font {
+            font-family: 'Playfair Display', serif;
+            color: var(--primary-navy);
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(26, 54, 93, 0.1);
+        }
+
+        .section-divider {
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--primary-navy), transparent);
+            margin: 2rem 0;
+            opacity: 0.2;
+        }
+
+        .callout-warning {
+            border-left: 5px solid var(--warning-red);
+            background-color: #fff5f5;
+        }
+
+        .callout-protocol {
+            border-left: 5px solid var(--primary-navy);
+            background-color: var(--clinical-blue);
+        }
+
+        .badge-fit {
+            background-color: var(--accent-green);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+
+        @media print {
+            .no-print { display: none; }
+            body { background-color: white; }
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th {
+            background-color: var(--clinical-blue);
+            color: var(--primary-navy);
+            text-align: left;
+            padding: 12px;
+            font-weight: 600;
+            border-bottom: 2px solid #e2e8f0;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        tr:nth-child(even) {
+            background-color: #fcfcfc;
+        }
+
+        .hover-lift {
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .hover-lift:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body class="p-4 md:p-8">
+
+    <div class="max-w-[900px] mx-auto bg-white shadow-2xl rounded-sm overflow-hidden border border-gray-100">
+        
+        <!-- HEADER SECTION -->
+        <header class="p-8 border-b-4 border-[#1a365d] bg-white">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                <div>
+                    <h1 class="header-font text-3xl md:text-4xl uppercase tracking-tight">Autophagy - Tự Thực Bào</h1>
+                    <p class="text-sm tracking-widest text-slate-500 font-sans font-semibold uppercase">Hệ Thống Phân Tích AI Dinh Dưỡng</p>
+                </div>
+                <div class="text-right font-sans text-xs text-slate-400">
+                    <p id="current-date"></p>
+                    <a href="www.phamhoanganhtokens.com" target="_blank" class="hover:text-[#1a365d] underline transition-colors">www.phamhoanganhtokens.com</a>
+                </div>
+            </div>
+        </header>
+
+        <main class="p-8 md:p-12">
+            
+            <!-- EXECUTIVE SUMMARY -->
+            <section class="mb-12">
+                <div class="glass-card p-6 rounded-lg shadow-sm border border-slate-200">
+                    <div class="flex justify-between items-center mb-4">
+                        <h2 class="header-font text-2xl">Tóm Tắt Nhanh</h2>
+                        <span class="badge-fit">Đánh giá: Rất phù hợp</span>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div class="p-4 bg-slate-50 rounded border border-slate-100 flex items-center gap-3">
+                            <svg class="w-8 h-8 text-[#1a365d]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
+                            <div>
+                                <p class="text-xs uppercase text-slate-400 font-sans font-bold">Khách hàng</p>
+                                <p class="font-bold text-lg">Phạm Hoàng Anh</p>
+                            </div>
+                        </div>
+                        <div class="p-4 bg-slate-50 rounded border border-slate-100 flex items-center gap-3">
+                            <svg class="w-8 h-8 text-[#1a365d]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
+                            <div>
+                                <p class="text-xs uppercase text-slate-400 font-sans font-bold">Chỉ số BMI</p>
+                                <p class="font-bold text-lg text-orange-600">31.2 (Béo phì độ 1)</p>
+                            </div>
+                        </div>
+                        <div class="p-4 bg-slate-50 rounded border border-slate-100 flex items-center gap-3">
+                            <svg class="w-8 h-8 text-[#1a365d]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            <div>
+                                <p class="text-xs uppercase text-slate-400 font-sans font-bold">Độ tuổi</p>
+                                <p class="font-bold text-lg">43 tuổi</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 1. LỜI KHƯỚC TỪ -->
+            <section class="mb-12 academic-text">
+                <div class="callout-warning p-6 rounded-r-lg italic text-slate-700 text-sm">
+                    <div class="flex items-center gap-2 mb-2 not-italic font-bold text-red-700">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd"></path></svg>
+                        1. LỜI KHƯỚC TỪ TRÁCH NHIỆM Y TẾ
+                    </div>
+                    Thông tin trong báo cáo này chỉ mang tính chất tham khảo và giáo dục, được xây dựng dựa trên dữ liệu cá nhân và phân tích từ hội đồng chuyên gia. Báo cáo này <strong>không thay thế</strong> cho lời khuyên, chẩn đoán hoặc điều trị y khoa từ bác sĩ chuyên khoa. Anh Hoàng Anh cần thảo luận với bác sĩ điều trị tiểu đường trước khi thay đổi chế độ ăn uống hoặc phác đồ tập luyện, đặc biệt là khi đang sử dụng thuốc hạ đường huyết.
+                </div>
+            </section>
+
+            <!-- 2. PHÂN TÍCH TRẠNG THÁI -->
+            <section class="mb-12">
+                <h2 class="header-font text-2xl mb-4 border-b border-slate-100 pb-2 flex items-center gap-3">
+                    <svg class="w-6 h-6 text-[#1a365d]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg>
+                    2. PHÂN TÍCH TRẠNG THÁI SỨC KHỎE HIỆN TẠI
+                </h2>
+                <div class="academic-text space-y-4 text-lg">
+                    <p><strong>Chỉ số hình thể (BMI 31.2):</strong> Anh đang ở mức Béo phì độ 1. Trọng lượng 85kg trên chiều cao 1m65 tạo áp lực cực lớn lên hệ xương khớp (đặc biệt là khớp gối và cột sống) và là nguyên nhân chính gây kháng Insulin.</p>
+                    <p><strong>Tình trạng Tiểu đường tuýp 2:</strong> Cơ thể anh đang mất khả năng điều tiết đường huyết hiệu quả. Việc tiêu thụ tinh bột tinh chế (bánh mỳ, phở) thường xuyên khiến tuyến tụy phải làm việc quá tải.</p>
+                    <p><strong>Rủi ro từ chế độ ăn hiện tại:</strong> Thói quen bỏ bữa sáng nhưng lại ăn nhiều tinh bột vào bữa trưa tạo ra hiện tượng "đỉnh đường huyết" (glucose spikes). Sự dao động đường huyết đột ngột này không chỉ gây mệt mỏi mà còn thúc đẩy quá trình tích mỡ nội tạng và làm trầm trọng thêm tình trạng bệnh.</p>
+                </div>
+            </section>
+
+            <div class="section-divider"></div>
+
+            <!-- 3. TỐI ƯU HÓA AUTOPHAGY -->
+            <section class="mb-12">
+                <h2 class="header-font text-2xl mb-4 border-b border-slate-100 pb-2 flex items-center gap-3 text-emerald-800">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
+                    3. TỐI ƯU HÓA AUTOPHAGY VÀ CHUYỂN HÓA
+                </h2>
+                <div class="academic-text text-lg mb-6">
+                    Việc anh bỏ bữa sáng là một lợi thế tự nhiên để kích hoạt cơ chế <strong>Autophagy</strong> (đã được chứng minh bởi giải Nobel 2016).
+                </div>
+                <div class="grid md:grid-cols-2 gap-4">
+                    <div class="bg-emerald-50 p-6 rounded-lg border border-emerald-100">
+                        <h4 class="font-bold text-emerald-900 mb-2 uppercase text-sm">Cơ chế khoa học</h4>
+                        <p class="text-sm italic">Khi nhịn ăn trên 12-14 tiếng, enzyme AMPK được kích hoạt, thúc đẩy tế bào tự dọn dẹp các thành phần hư hỏng và sửa chữa các thụ thể Insulin.</p>
+                    </div>
+                    <div class="bg-[#1a365d] text-white p-6 rounded-lg">
+                        <h4 class="font-bold mb-2 uppercase text-sm text-blue-200">Lộ trình khuyến nghị</h4>
+                        <p class="text-sm">Duy trì khung nhịn ăn 16:8 (12h trưa - 20h tối). Bữa đầu tiên (12h) cần tránh tuyệt đối tinh bột nhanh để tối đa hóa khả năng tái tạo tế bào beta.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 4. KHUYẾN NGHỊ DINH DƯỠNG -->
+            <section class="mb-12">
+                <h2 class="header-font text-2xl mb-4 border-b border-slate-100 pb-2 flex items-center gap-3">
+                    <svg class="w-6 h-6 text-[#1a365d]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 15.546c-.523 0-1.046.151-1.5.454a2.704 2.704 0 01-3 0 2.704 2.704 0 00-3 0 2.704 2.704 0 01-3 0 2.704 2.704 0 00-3 0 2.704 2.704 0 01-3 0 2.701 2.701 0 00-1.5-.454M9 16v2m3-6v6m3-3v3M9 12h6M4 4h16v12H4V4z"></path></svg>
+                    4. KHUYẾN NGHỊ DINH DƯỠNG CỤ THỂ
+                </h2>
+                <div class="bg-amber-50 p-4 mb-6 rounded border border-amber-100 flex items-center gap-3">
+                    <span class="text-2xl">✨</span>
+                    <p class="text-sm font-bold text-amber-900 uppercase tracking-wide">Quy tắc Vàng: Rau xanh &rarr; Đạm &rarr; Tinh bột</p>
+                </div>
+                
+                <div class="overflow-x-auto">
+                    <table class="academic-text">
+                        <thead>
+                            <tr>
+                                <th>Thực đơn quen thuộc</th>
+                                <th>Chiến lược điều chỉnh</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="font-bold">Phở sáng/trưa</td>
+                                <td>Gọi nhiều giá, nhiều rau, gấp đôi thịt, lấy 1/3 bánh, <strong>không nước béo</strong>.</td>
+                            </tr>
+                            <tr>
+                                <td class="font-bold">Bánh mỳ</td>
+                                <td>Ưu tiên bánh mỳ đen/nguyên cám. Ăn kèm 2 quả trứng + nhiều dưa chuột để giảm GI.</td>
+                            </tr>
+                            <tr>
+                                <td class="font-bold">Cà phê</td>
+                                <td>Cà phê đen không đường. Thêm 1 thìa dầu dừa/MCT để tăng đốt mỡ và no lâu.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- 5. KẾ HOẠCH TẬP LUYỆN -->
+            <section class="mb-12">
+                <h2 class="header-font text-2xl mb-4 border-b border-slate-100 pb-2 flex items-center gap-3">
+                    <svg class="w-6 h-6 text-[#1a365d]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                    5. KẾ HOẠCH TẬP LUYỆN CÁ NHÂN HÓA
+                </h2>
+                <div class="space-y-4">
+                    <div class="p-6 border border-slate-200 rounded-lg hover-lift">
+                        <h3 class="font-bold text-lg mb-2 text-[#1a365d]">Giai đoạn 1: Đi bộ ngắt quãng (Tuần 1-4)</h3>
+                        <p class="academic-text text-sm">Đi 3 phút nhanh (nhịp thở nhanh, đổ mồ hôi) xen kẽ 3 phút chậm. Thực hiện 30 phút mỗi ngày để kích hoạt thụ thể GLUT4.</p>
+                    </div>
+                    <div class="p-6 border border-slate-200 rounded-lg hover-lift">
+                        <h3 class="font-bold text-lg mb-2 text-[#1a365d]">Giai đoạn 2: Tập kháng lực (Sau tuần 4)</h3>
+                        <p class="academic-text text-sm">Bổ sung Squat, chống đẩy tường. Cơ bắp vùng đùi/mông là "kho chứa đường" lớn nhất; tăng cơ sẽ giúp hạ đường huyết tự nhiên.</p>
+                    </div>
+                    <div class="p-4 bg-red-50 text-red-800 text-sm font-bold rounded border border-red-100 flex items-center gap-2">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" clip-rule="evenodd"></path></svg>
+                        LƯU Ý: Tuyệt đối không chạy bộ cường độ cao khi BMI còn trên 30 để bảo vệ khớp gối.
+                    </div>
+                </div>
+            </section>
+
+            <!-- 6. PHÒNG NGỪA AN TOÀN -->
+            <section class="mb-12">
+                <h2 class="header-font text-2xl mb-4 border-b border-slate-100 pb-2 flex items-center gap-3 text-red-800">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" clip-rule="evenodd"></path></svg>
+                    6. PHÒNG NGỪA AN TOÀN VÀ CHỐNG CHỈ ĐỊNH
+                </h2>
+                <ul class="space-y-4 academic-text text-lg">
+                    <li class="flex gap-4">
+                        <span class="text-red-600 font-bold">•</span>
+                        <span><strong>Cảnh báo hạ đường huyết:</strong> Nếu thấy chóng mặt, vã mồ hôi, run tay, anh cần bổ sung ngay 15g đường nhanh (nửa ly nước trái cây) và báo với bác sĩ.</span>
+                    </li>
+                    <li class="flex gap-4">
+                        <span class="text-red-600 font-bold">•</span>
+                        <span><strong>Áp lực xương khớp:</strong> Nếu thấy đau khớp gối khi đi bộ, hãy chuyển sang bơi lội hoặc đạp xe để giảm tải.</span>
+                    </li>
+                    <li class="flex gap-4">
+                        <span class="text-red-600 font-bold">•</span>
+                        <span><strong>Kiểm tra định kỳ:</strong> Theo dõi HbA1c mỗi 3 tháng và chú ý chỉ số Acid Uric.</span>
+                    </li>
+                </ul>
+            </section>
+
+            <!-- 7. ĐIỀU CHỈNH LỐI SỐNG -->
+            <section class="mb-12">
+                <h2 class="header-font text-2xl mb-4 border-b border-slate-100 pb-2 flex items-center gap-3 text-[#1a365d]">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    7. ĐIỀU CHỈNH LỐI SỐNG CÁ NHÂN HÓA
+                </h2>
+                <div class="grid md:grid-cols-2 gap-6 academic-text">
+                    <div class="space-y-4">
+                        <p><strong>Văn hóa "Phở và Cà phê":</strong> Hãy biến việc đi ăn phở thành một trải nghiệm sức khỏe bằng cách yêu cầu điều chỉnh như hướng dẫn tại mục 4.</p>
+                        <p><strong>Mẹo duy trì:</strong> Sử dụng cà phê đen sau bữa trưa để hỗ trợ tiêu hóa và tăng trao đổi chất.</p>
+                    </div>
+                    <div class="bg-slate-50 p-6 rounded-lg border-l-4 border-[#1a365d]">
+                        <p class="italic text-slate-600">"Đừng coi đây là một chế độ ăn kiêng hà khắc. Hãy coi đây là việc nâng cấp chất lượng thực phẩm để có một cơ thể linh hoạt hơn ở tuổi 43."</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CONCLUSION -->
+            <section class="mt-16 pt-8 border-t-2 border-slate-100">
+                <div class="text-center max-w-2xl mx-auto">
+                    <h3 class="header-font text-xl mb-4">Kết luận từ Hội đồng chuyên gia</h3>
+                    <p class="academic-text italic text-slate-700">
+                        Anh có nền tảng tốt là thói quen nhịn ăn sáng và đi bộ. Chỉ cần điều chỉnh thứ tự ăn và thêm các bài tập kháng lực nhẹ, anh hoàn toàn có thể kiểm soát tốt đường huyết và giảm cân bền vững.
+                    </p>
+                    <div class="mt-8 flex justify-center gap-12 opacity-50">
+                        <div class="text-center">
+                            <div class="h-1 w-24 bg-slate-400 mx-auto mb-2"></div>
+                            <p class="text-[10px] uppercase font-bold tracking-widest">Xác nhận Y khoa</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="h-1 w-24 bg-slate-400 mx-auto mb-2"></div>
+                            <p class="text-[10px] uppercase font-bold tracking-widest">Chuyên gia Dinh dưỡng</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <script>
+        // Dynamic Date Generation
+        const dateElement = document.getElementById('current-date');
+        const now = new Date();
+        const options = { year: 'numeric', month: 'long', day: 'numeric' };
+        dateElement.textContent = `Ngày báo cáo: ${now.toLocaleDateString('vi-VN', options)}`;
+
+        // Smooth Scroll effect for links (if any added later)
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
